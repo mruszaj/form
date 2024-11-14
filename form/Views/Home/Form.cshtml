@@ -3,9 +3,23 @@
 @{
 
     ViewData["Title"] = "Form";
+
 }
+<script>
+function validateForm() {
+
+    
+        let surname = document.forms["Form"]["nazwisko"].value;
+        let name = document.forms["Form"]["imie"].value;
+        let phone = document.forms["Form"]["telefon"].value;
+        if (name == ""||surname == ""||phone == "") {
+            alert("Podaj dane");
+            return false;
+        }
 
 
+}
+</script>
 
 <h1>Form</h1>
 
@@ -15,17 +29,17 @@
 <div class="row">
     <div class="col-md-4">
 
-            <form asp-action="Form" method="post">
+        <form asp-action="Form" name="Form" method="post" onsubmit="return validateForm()">
                 <div asp-validation-summary="All"></div>
 
             <div >
                 <label asp-for="Imie"></label>
-                <input asp-for="Imie" />
+                <input name="imie" asp-for="Imie" />
 
             </div>
             <div>
                 <label asp-for="Nazwisko"></label>
-                <input asp-for="Nazwisko" />
+                <input name="nazwisko" asp-for="Nazwisko" />
 
             </div>
             <div >
@@ -45,7 +59,7 @@
             </div>
             <div>
                 <label asp-for="NumerTelefonu"></label>
-                <input type="tel" asp-for="NumerTelefonu" />
+                <input name="telefon" type="tel" asp-for="NumerTelefonu" />
 
             </div>
             <div>
