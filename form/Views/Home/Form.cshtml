@@ -1,0 +1,77 @@
+﻿@model form.Models.Dane
+
+@{
+
+    ViewData["Title"] = "Form";
+}
+
+
+
+<h1>Form</h1>
+
+<h4>Dane</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+
+            <form asp-action="Form" method="post">
+                <div asp-validation-summary="All"></div>
+
+            <div >
+                <label asp-for="Imie"></label>
+                <input asp-for="Imie" />
+
+            </div>
+            <div>
+                <label asp-for="Nazwisko"></label>
+                <input asp-for="Nazwisko" />
+
+            </div>
+            <div >
+                <label asp-for="Email" ></label>
+                <input  type="email" asp-for="Email"  />
+
+            </div>
+            <div >
+                <label asp-for="Hasło" ></label>
+                <input type="password" asp-for="Hasło"  />
+
+            </div>
+            <div >
+                <label asp-for="Hasło2"></label>
+                <input type="password" asp-for="Hasło2" />
+
+            </div>
+            <div>
+                <label asp-for="NumerTelefonu"></label>
+                <input type="tel" asp-for="NumerTelefonu" />
+
+            </div>
+            <div>
+                <label asp-for="Wiek"></label>
+                <input type="number" asp-for="Wiek" />
+
+            </div>
+            <div>
+                <label asp-for="Miasto"></label>
+                <select asp-for="Miasto"
+                        asp-items="Html.GetEnumSelectList<Dane.Miasta>()">
+                </select>
+
+            </div>
+            <div >
+                <input type="submit" />
+            </div>
+            <div>
+                <input type="reset" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+ @section Scripts {
+     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+ }
